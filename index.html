@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Siswa Digital SMP Mudacil 2026</title>
+    <!-- Menggunakan Google Font Inter untuk kesan modern & bersih -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --------------------------------------------------
+           1. RESET & VARIABLE WARNA
+           -------------------------------------------------- */
+        :root {
+            --bg-pencarian: #f4f7f9;       /* Abu-abu kebiruan sangat muda */
+            --bg-card: #ffffff;            /* Putih bersih */
+            --text-utama: #2c3e50;         /* Greyblue tua untuk keterbacaan */
+            --text-sekunder: #7f8c8d;      /* Abu-abu untuk nama/kelas */
+            --placeholder: #e2e8f0;        /* Abu-abu terang untuk kotak gambar */
+            
+            /* Warna Aksen Badge Pastel */
+            --construct-bg: #e3f2fd;
+            --construct-text: #1976d2;
+            --scratch-bg: #fef9e7;
+            --scratch-text: #b7950b;
+            --figma-bg: #f3e5f5;
+            --figma-text: #8e24aa;
+            
+            /* Font */
+            --font-utama: 'Inter', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-utama);
+            background-color: var(--bg-pencarian);
+            color: var(--text-utama);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* --------------------------------------------------
+           2. HEADER SECTION
+           -------------------------------------------------- */
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-utama);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: var(--text-sekunder);
+            font-weight: 500;
+        }
+
+        /* --------------------------------------------------
+           3. CATEGORY TITLE
+           -------------------------------------------------- */
+        .category-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 40px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--placeholder);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* --------------------------------------------------
+           4. GRID LAYOUT (RESPONSIVE)
+           -------------------------------------------------- */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        /* Tablet (2 Kolom) */
+        @media (min-width: 600px) {
+            .project-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Desktop (3 Kolom) */
+        @media (min-width: 1024px) {
+            .project-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* --------------------------------------------------
+           5. COMPONENT CARD (KOTAK PROJECT)
+           -------------------------------------------------- */
+        .card {
+            background-color: var(--bg-card);
+            border-radius: 16px;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0, 0, 0, 0.05);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            cursor: pointer;
+        }
+
+        /* Hover Effect */
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.03);
+        }
+
+        /* Bagian Atas: Placeholder Gambar */
+        .card-thumbnail {
+            height: 170px;
+            background-color: var(--placeholder);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-sekunder);
+            font-size: 0.9rem;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Label Kategori / Badge */
+        .badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        .badge-construct {
+            background-color: var(--construct-bg);
+            color: var(--construct-text);
+        }
+
+        .badge-scratch {
+            background-color: var(--scratch-bg);
+            color: var(--scratch-text);
+        }
+
+        .badge-figma {
+            background-color: var(--figma-bg);
+            color: var(--figma-text);
+        }
+
+        /* Bagian Bawah: Info Project */
+        .card-info {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .project-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-utama);
+            text-transform: uppercase; /* Sesuai request judul kapital */
+        }
+
+        .student-name {
+            font-size: 0.9rem;
+            color: var(--text-sekunder);
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- HEADER -->
+        <header>
+            <h1>Project Siswa Digital SMP Mudacil 2026</h1>
+            <p>Game Construct, Scratch & Desain Aplikasi Figma</p>
+        </header>
+
+        <!-- ==================================================
+             KATEGORI 1: GAME SISWA (CONSTRUCT & SCRATCH)
+             ================================================== -->
+        <div class="category-title">
+            <span>🎮</span> Game Karya Siswa
+        </div>
+        
+        <div class="project-grid">
+
+            <!-- Game 1 -->
+            <a href="game-1/index.html" target="_blank" class="card">
+                   <div class="card-thumbnail" style="background-image: url('gambar/game.png');">
+                    <span class="badge badge-construct">Construct 3</span>
+               
+                </div>
+                <div class="card-info">
+                    <div class="project-title">NINJA BOY VS ALLIEN</div>
+                    <div class="student-name">DIGITAL CLASS PROJECT</div>
+                </div>
+            </a>
+
+            <!-- Game 2 -->
+            <a href="game-2/index.html" target="_blank" class="card">
+                <div class="card-thumbnail" style="background-image: url('gambar/game.png');">
+                    <span class="badge badge-construct">Construct 3</span>
+                 
+                </div>
+                <div class="card-info">
+                    <div class="project-title">SELAMATKAN KURA KURA</div>
+                    <div class="student-name">DIGITAL CLASS PROJECT</div>
+                </div>
+            </a>
+
+            <!-- Game 3 -->
+            <a href="game-3/index.html" target="_blank" class="card">
+                   <div class="card-thumbnail" style="background-image: url('gambar/game.png');">
+                    <span class="badge badge-construct">Construct 3</span>
+                   
+                </div>
+                <div class="card-info">
+                    <div class="project-title">MIND FAULT GAME</div>
+                    <div class="student-name">Oleh Bilal • Kelas 9B</div>
+                </div>
+            </a>
+
+            <!-- Game 4 -->
+            <a href="game-4/index.html" target="_blank" class="card">
+                  <div class="card-thumbnail" style="background-image: url('gambar/game.png');">
+                    <span class="badge badge-construct">Construct 3</span>
+                </div>
+                <div class="card-info">
+                    <div class="project-title">LIGHTRISE GAME</div>
+                    <div class="student-name">Oleh Rafif Afnan • Kelas 9B</div>
+                </div>
+            </a>
+
+            <!-- Game 5 -->
+            <a href="game-5/index.html" target="_blank" class="card">
+                  <div class="card-thumbnail" style="background-image: url('gambar/game.png');">
+                    <span class="badge badge-construct">Construct 3</span>
+                </div>
+                <div class="card-info">
+                    <div class="project-title">FLAPPING BIRD</div>
+                    <div class="student-name">Oleh Novelia • Kelas 9B</div>
+                </div>
+            </a>
+
+            <!-- Game 6 -->
+            <a href="game-6/index.html" target="_blank" class="card">
+                  <div class="card-thumbnail" style="background-image: url('gambar/game.png');">
+                    <span class="badge badge-construct">Construct 3</span>
+                </div>
+                <div class="card-info">
+                    <div class="project-title">PLATFORMER</div>
+                    <div class="student-name">Oleh Azzam • Kelas 9B</div>
+                </div>
+            </a>
+
+            <!-- Game 7 -->
+            <a href="game-7/index.html" target="_blank" class="card">
+              <div class="card-thumbnail" style="background-image: url('gambar/game2.jpg');">
+                    <span class="badge badge-scratch">SCRATCH</span>
+                </div>
+                <div class="card-info">
+                    <div class="project-title">UFO SIMULATOR</div>
+                    <div class="student-name">Oleh Raaif • Kelas 9B</div>
+                </div>
+            </a>
+
+            <!-- Game 8 -->
+            <a href="game-8/index.html" target="_blank" class="card">
+               <div class="card-thumbnail" style="background-image: url('gambar/game2.jpg');">
+                    <span class="badge badge-scratch">SCRATCH</span>
+                </div>
+                <div class="card-info">
+                    <div class="project-title">GEOMETRY DASH</div>
+                    <div class="student-name">Oleh Novelita • Kelas 9B</div>
+                </div>
+            </a>
+
+            <!-- Game 9 -->
+            <a href="game-9/index.html" target="_blank" class="card">
+              <div class="card-thumbnail" style="background-image: url('gambar/game2.jpg');">
+                    <span class="badge badge-scratch">SCRATCH</span>
+                </div>
+                <div class="card-info">
+                    <div class="project-title">RETRO CAR</div>
+                    <div class="student-name">Oleh Aravano • Kelas 9B</div>
+                </div>
+            </a>
+
+        </div>
+
+
+        <!-- ==================================================
+             KATEGORI 2: DESAIN APLIKASI (FIGMA PROTOTYPE)
+             ================================================== -->
+        <div class="category-title">
+            <span>✨</span> Desain Aplikasi
+        </div>
+
+        <div class="project-grid">
+
+            <!-- Desain 1 -->
+            <a href="https://www.figma.com/proto/OY20cBQAOEkjLD8jhCpytf/Projek-TIK-Khaira--Aqilah-P.B-kls-9b-aplikasi-bakery-%22Veloura%22?node-id=61-293&p=f&t=FIe4qttDQWM8MegS-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1" target="_blank" class="card">
+                 <div class="card-thumbnail" style="background-image: url('gambar/ui.png');">
+                    <span class="badge badge-construct">Construct 3</span>
+                </div>
+                <div class="card-info">
+                    <div class="project-title">VELAURA BREAD</div>
+                    <div class="student-name">Oleh Khaira Aqilah</div>
+                </div>
+            </a>
+
+            <!-- Desain 2 -->
+            <a href="https://www.figma.com/proto/2apXmZ9dbmMQAxVQuMNRoM/Untitled?node-id=1-29&p=f&t=rda7my9BErJWL4Hh-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=26%3A197" target="_blank" class="card">
+                <div class="card-thumbnail" style="background-image: url('gambar/ui.png');">
+                    <span class="badge badge-construct">Construct 3</span>
+                </div>
+                <div class="card-info">
+                    <div class="project-title">AERI COFFEE</div>
+                    <div class="student-name">Oleh Diari Puspa • Kelas 9B</div>
+                </div>
+            </a>
+
+            <!-- Desain 3 -->
+            <a href="https://www.figma.com/proto/Vy0d6hcf2CcjLRbc87u2vt/kirana-project-8b?node-id=9-12&p=f&t=2BlIdmosJ8RHbOJ6-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1" target="_blank" class="card">
+                <div class="card-thumbnail" style="background-image: url('gambar/ui.png');">
+                    <span class="badge badge-construct">Construct 3</span>
+                </div>
+                <div class="card-info">
+                    <div class="project-title">UJIAN ONLINE</div>
+                    <div class="student-name">Oleh Kirana • Kelas 8B</div>
+                </div>
+            </a>
+
+            <!-- Desain 4 -->
+            <a href="https://www.figma.com/proto/xPHYiG4a3KyYmfZBU6wj9W/Untitled?node-id=0-1&t=OnIdxxBA6T90caAo-1" target="_blank" class="card">
+               <div class="card-thumbnail" style="background-image: url('gambar/ui.png');">
+                    <span class="badge badge-construct">Construct 3</span>
+                </div>
+                <div class="card-info">
+                    <div class="project-title">VINTAGENEST - KOLEKSI VINTAGE</div>
+                    <div class="student-name">Oleh Citra Kirana • Kelas 9B</div>
+                </div>
+            </a>
+
+            <!-- Desain 5 -->
+            <a href="https://www.figma.com/proto/SdBSfGkS5j09rGazEduvOD/Untitled?node-id=15-39&p=f&t=kNH1yLppwsZxjjal-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=51%3A214&show-proto-sidebar=1" target="_blank" class="card">
+                <div class="card-thumbnail" style="background-image: url('gambar/ui.png');">
+                    <span class="badge badge-construct">Construct 3</span>
+                </div>
+                <div class="card-info">
+                    <div class="project-title">KULINAGO</div>
+                    <div class="student-name">Oleh Janeta</div>
+                </div>
+            </a>
+
+            <!-- Desain 6 -->
+            <a href="https://www.figma.com/proto/QREssDtH6RrxtSAAm9BSZq/Untitled?node-id=20-810&p=f&t=nabWUZa3WWQ7vDZW-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A2&show-proto-sidebar=1" target="_blank" class="card">
+               <div class="card-thumbnail" style="background-image: url('gambar/ui.png');">
+                    <span class="badge badge-construct">Construct 3</span>
+                </div>
+                <div class="card-info">
+                    <div class="project-title">WARE WAVE BOOK</div>
+                    <div class="student-name">Oleh Wafa</div>
+                </div>
+            </a>
+
+            <!-- Desain 7 -->
+            <a href="https://www.figma.com/proto/6q5hfWL22ZAmyCQRQC3Mvo/Untitled?node-id=12-29&p=f&t=uwaacdIEoLi9vmtn-1&scaling=scale-down&content-scaling=fixed&page-id=11%3A11&starting-point-node-id=11%3A21" target="_blank" class="card">
+               <div class="card-thumbnail" style="background-image: url('gambar/ui.png');">
+                    <span class="badge badge-construct">Construct 3</span>
+                </div>
+                <div class="card-info">
+                    <div class="project-title">KENYANG BANGET</div>
+                    <div class="student-name">Oleh Hafiza • Kelas 9B</div>
+                </div>
+            </a>
+
+            <!-- Desain 8 -->
+            <a href="https://www.figma.com/proto/k3tIxiPXDLTSni0bYtYXB6/Untitled?node-id=102-631&p=f&t=RTOfE5jGdHLP8iHz-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A123" target="_blank" class="card">
+                <div class="card-thumbnail" style="background-image: url('gambar/ui.png');">
+                    <span class="badge badge-construct">Construct 3</span>
+                </div>
+                <div class="card-info">
+                    <div class="project-title">PLN MOBILE</div>
+                    <div class="student-name">Oleh Hafis • Kelas 9A</div>
+                </div>
+            </a>
+
+            <!-- Desain 9 -->
+            <a href="https://www.figma.com/proto/M5wrAJvLprn6mT2qS9ZuDs/tugas-uprak-tik?node-id=1024-12&p=f&t=snjthd2ZaRgig0L6-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1022%3A7&show-proto-sidebar=1" target="_blank" class="card">
+               <div class="card-thumbnail" style="background-image: url('gambar/ui.png');">
+                    <span class="badge badge-construct">Construct 3</span>
+                </div>
+                <div class="card-info">
+                    <div class="project-title">DEVELOVE</div>
+                    <div class="student-name">Oleh Cahaya Setya Dewi</div>
+                </div>
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
