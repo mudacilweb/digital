@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scratch Project</title>
+
+  <style>
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      background:#f4f7fb;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      min-height:100vh;
+      padding:20px;
+    }
+
+    .container{
+      background:white;
+      padding:20px;
+      border-radius:20px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.08);
+      text-align:center;
+      max-width:100%;
+    }
+
+    iframe{
+      max-width:100%;
+      border-radius:12px;
+    }
+
+    .btn-kembali{
+      margin-top:20px;
+      padding:12px 24px;
+      border:none;
+      border-radius:12px;
+      background:#7aa6ff;
+      color:white;
+      font-size:16px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .btn-kembali:hover{
+      background:#5d8df5;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+<iframe src="https://scratch.mit.edu/projects/1323159171/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+    <br>
+
+    <button class="btn-kembali" onclick="history.back()">
+      ← Kembali
+    </button>
+
+  </div>
+
+  	<script>
+    // Waktu 5 menit = 360.000 milidetik
+    setTimeout(function() {
+        window.close();
+    }, 360000);
+	</script>
+
+</body>
+</html>
